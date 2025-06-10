@@ -57,8 +57,9 @@ export default function CuboConImagen() {
         </div>
       </div>
       <Canvas
-        style={{ background: 'black' }}
+        style={{ background: 'black', touchAction: 'pan-y', }}
         camera={{ position: [0, 0, 8], fov: 50 }}
+        
       /* gl={{ antialias: true }}
   onCreated={({ gl }) => {
     gl.setClearColor('black') // 🎯 Fondo negro
