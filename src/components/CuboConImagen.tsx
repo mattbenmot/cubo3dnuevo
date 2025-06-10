@@ -49,17 +49,17 @@ import { useRef, useEffect, useMemo } from 'react'
 
 export default function CuboConImagen() {
   return (
-    <div className='relative flex justify-center bg-[#11171a] w-full overflow-hidden h-full'>
+    <div className='relative flex justify-center bg-[#11171a] w-full overflow-hidden h-full' style={{ touchAction: 'pan-y' }}>
       <div className="w-[50%] absolute z-10 flex">
-        <div className='leading-[0.9] flex flex-col gap-6'>
-          <h2 className=" font-extrabold text-[5rem] tracking-tighter text-pink-400">TITULO COSO</h2>
-          <p className='font-mono font-light tracking-normal text-white'>Así, la luz siempre llega desde donde vos mirás, y la cara del cubo que está de frente siempre está bien iluminada, sin importar su orientación previa.</p>
+        <div className='leading-[0.9] flex flex-col gap-6 '>
+          <h2 className=" font-extrabold text-[5rem] tracking-tighter text-pink-400 opacity-[80%]">TITULO COSO</h2>
+          <p className='font-mono font-light tracking-normal text-white opacity-[80%]'>Así, la luz siempre llega desde donde vos mirás, y la cara del cubo que está de frente siempre está bien iluminada, sin importar su orientación previa.</p>
         </div>
       </div>
       <Canvas
         style={{ background: 'black', touchAction: 'pan-y', }}
         camera={{ position: [0, 0, 8], fov: 50 }}
-        
+
       /* gl={{ antialias: true }}
   onCreated={({ gl }) => {
     gl.setClearColor('black') // 🎯 Fondo negro
@@ -71,8 +71,16 @@ export default function CuboConImagen() {
         <LuzEnCamara />
         <OrbitControls
           enableZoom={false}
+          enablePan={false}
+          enableRotate={true}
           minPolarAngle={Math.PI / 2}
           maxPolarAngle={Math.PI / 2}
+          screenSpacePanning={false}
+          touches={{
+            ONE: THREE.TOUCH.ROTATE,
+            TWO: THREE.TOUCH.DOLLY_PAN
+          }}
+         
         />
         <CuboConTexturas />
       </Canvas>
